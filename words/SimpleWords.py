@@ -37,12 +37,18 @@ class SimpleWords:
     def verbs(self):
         return self.search_words_in_file(VERBS_PATH)
 
-    def nouns_in_text(self, text):
+    def nouns_in_text(self, text: str):
         text = text.split(" ")
+        clean_text = []
+        for word in text:
+            clean_text.append(''.join(e for e in word if e.isalnum()))
         nouns = self.nouns()
         res = []
-        for word in text:
-            word_morphed = wordnet.morphy(word)
-            if word_morphed in nouns:
-                res.append(word_morphed)
+        for word in clean_text:
+            if word in nouns:
+                res.append(word)
+            else:
+                word_morphed = wordnet.morphy(word)
+                if word_morphed in nouns:
+                    res.append(word_morphed)
         return res
