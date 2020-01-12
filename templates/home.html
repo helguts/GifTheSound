@@ -10,25 +10,11 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{{ url_for('static', filename='home.js') }}" type="text/javascript"></script>
 <div>
+    <textarea class="searchtext" id="searchtext"></textarea>
     <p>
-        <button id="btNouns">nouns</button>
-        <button id="btAdj">adjects</button>
-        <button id="btAdv">adverbs</button>
-        <button id="btVerbs">verbs</button>
-        <button id="btSentence">Random sentence</button>
-    </p>
-    <span id="theword">The Word.</span>
-    <p>
-        <img id="thegif" src=""/>
-    </p>
-    <p>
-        <span id="thesentence">The sentence.</span>
-    </p>
-    <p>
-        <textarea id="searchtext"></textarea>
         <button id="btSearchGifForText">Show gifs</button>
     </p>
-    <div id="gifdiv"></div>
 </div>
+<div id="gifdiv"></div>
 </body>
 </html>

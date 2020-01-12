@@ -18,25 +18,6 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/load_words', methods=['POST'])
-def load_words():
-    word_type = request.form.get("word_type")
-    words_of_type = words_by_type[word_type]
-    return random.choice(words_of_type)
-
-
-@app.route('/load_gif', methods=['POST'])
-def load_gif():
-    search_term = request.form.get("search_term")
-    gifs = GifGenerator().search(search_term)
-    if not gifs:
-        return ""
-
-    random_gif = random.choice(gifs)
-    image_url_downsized = random_gif.images.downsized.url
-    return image_url_downsized
-
-
 @app.route('/load_gifs', methods=['POST'])
 def load_gifs():
     search_text = request.form.get("search_text")
@@ -49,15 +30,6 @@ def load_gifs():
             random_gif = random.choice(gifs)
             all_urls.append({"word": word, "url": random_gif.images.downsized.url})
     return json.dumps(all_urls)
-
-
-@app.route('/get_sentence', methods=['POST'])
-def get_sentence():
-    adj = random.choice(words_by_type['adj'])
-    noun = random.choice(words_by_type['noun'])
-    verb = random.choice(words_by_type['verb'])
-    adv = random.choice(words_by_type['adv'])
-    return " ".join([adj, noun, verb, adv])
 
 
 if __name__ == "__main__":
