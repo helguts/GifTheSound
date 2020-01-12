@@ -26,7 +26,7 @@ class SimpleWords:
         return [word.replace('\n', '') for word in words]
 
     def nouns(self):
-        return self.search_words_in_file(NOUNS_PATH)
+        return [noun for noun in self.search_words_in_file(NOUNS_PATH) if len(noun) > 1]
 
     def adverbs(self):
         return self.search_words_in_file(ADVS_PATH)
@@ -38,7 +38,7 @@ class SimpleWords:
         return self.search_words_in_file(VERBS_PATH)
 
     def nouns_in_text(self, text: str):
-        text = text.split(" ")
+        text = text.replace("\n", " ").split(" ")
         clean_text = []
         for word in text:
             clean_text.append(''.join(e for e in word if e.isalnum()))

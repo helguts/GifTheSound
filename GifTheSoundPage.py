@@ -33,6 +33,4 @@ def load_gifs():
 
 
 if __name__ == "__main__":
-    search_Text = "Mama, just killed a man"
-    nouns = SimpleWords().nouns_in_text(text=search_Text)
     app.run()
