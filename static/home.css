@@ -1,0 +1,11 @@
+.giffortext {
+    max-width: 200px;
+}
+
+.divforgif {
+    width: 200px;
+    height: 250px;
+    border:1px solid black;
+    float: left;
+    padding: 10px;
+}
