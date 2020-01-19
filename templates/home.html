@@ -11,6 +11,35 @@
 <script src="{{ url_for('static', filename='home.js') }}" type="text/javascript"></script>
 <div>
     <textarea class="searchtext" id="searchtext"></textarea>
+    <fieldset class="fieldset-auto-width">
+        <legend>Search wordtypes:</legend>
+        <ul>
+            <li>
+                <label>
+                    <input checked id="wordTypeNouns" name="wordType" type="checkbox" value="nouns">
+                    Nouns
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input id="wordTypeAdjectives" name="wordType" type="checkbox" value="adjectives">
+                    Adjectives
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input id="wordTypeVerbs" name="wordType" type="checkbox" value="verbs">
+                    Verbs
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input id="wordTypeAdverbs" name="wordType" type="checkbox" value="Adverbs">
+                    Adverbs
+                </label>
+            </li>
+        </ul>
+    </fieldset>
     <p>
         <button id="btSearchGifForText">Show gifs</button>
         <input id="cbFastSearch" type="checkbox">Enable fast search (1 word = 1 gif)<br>

@@ -18,3 +18,7 @@
     float: left;
     padding: 10px;
 }
+
+.fieldset-auto-width {
+     display: inline-block;
+}

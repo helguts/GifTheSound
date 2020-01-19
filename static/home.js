@@ -8,12 +8,10 @@ function validURL(str) {
   return !!pattern.test(str);
 }
 
-function showGifsForText(searchText, doFastSearch) {
+function showGifsForText(options) {
     var start = new Date();
-    $('#gifdiv').empty();
-    $.post('/load_gifs', { search_text: searchText, do_fast_search: doFastSearch},
-        function(jsonGifs) {
-            var obj = jQuery.parseJSON(jsonGifs);
+    var onSuccessShowGifs = function(jsonGifs) {
+            var obj = jsonGifs;
 
             var markups = '';
             $.each(obj, function(word,gifURL) {
@@ -31,8 +29,19 @@ function showGifsForText(searchText, doFastSearch) {
             var end = new Date();
             var milliseconds = end - start;
             var totalSeconds = parseInt(milliseconds/ 1000);
-            $('#gifdiv').prepend('<p><span> request took: ' + totalSeconds + 's</span></p>')
-     });
+            $('#gifdiv').prepend('<p><span> request took ' + totalSeconds + 's for ' + $('.giffortext').length + 'gifs.</span></p>')
+     };
+    $('#gifdiv').empty();
+
+    // use ajax instead of .post() to set content type to json for "reuqest.json()" in flask
+    $.ajax({
+      url:'/load_gifs',
+      type:"POST",
+      data: JSON.stringify(options),
+      contentType:"application/json; charset=utf-8",
+      dataType:"json",
+      success: onSuccessShowGifs
+    })
  };
 
 $(function() {
@@ -40,7 +49,18 @@ $(function() {
   $('#btSearchGifForText').click(function(event) {
     var searchText = $('#searchtext').val();
     var doFastSearch = $('#cbFastSearch').is(":checked");
-    showGifsForText(searchText, doFastSearch);
+    var wordTypes = {
+        "nouns": $('#wordTypeNouns').is(":checked"),
+        "adverbs": $('#wordTypeAdverbs').is(":checked"),
+        "verbs": $('#wordTypeVerbs').is(":checked"),
+        "adjectives": $('#wordTypeAdjectives').is(":checked")
+    };
+    var options = {
+    "searchText": searchText,
+    "doFastSearch": doFastSearch,
+    "wordTypes": wordTypes
+    };
+    showGifsForText(options);
   });
   return true;
  });

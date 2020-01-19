@@ -40,14 +40,14 @@ class GifGenerator:
         except ApiException as e:
             print("Exception when calling DefaultApi->gifs_search_get: %s\n" % e)
 
-    def search_gifs_for_text(self, text):
-        nouns_in_text = SimpleWords().nouns_in_text(text)
+    def search_gifs_for_text(self, text, word_types):
+        words_in_text = SimpleWords().words_in_text(text, word_types)
 
         gifs_by_word = []
-        for noun in nouns_in_text:
-            if not noun:
+        for word in words_in_text:
+            if not word:
                 continue
-            gifs = self.search(noun)
+            gifs = self.search(word)
             if gifs:
-                gifs_by_word.append({noun: gifs})
+                gifs_by_word.append({word: gifs})
         return gifs_by_word
