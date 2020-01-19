@@ -31,9 +31,15 @@ function showGifsForText(options) {
             var milliseconds = end - start;
             var totalSeconds = parseInt(milliseconds/ 1000);
             $('#gifdiv').prepend('<p><span> request took ' + totalSeconds + 's for ' + $('.giffortext').length + 'gifs.</span></p>');
+
+            // enable controls and hide loader
             $("#btSearchGifForText").attr("disabled", false);
+            $("#loader").hide();
+            $("#gifdiv").show();
      };
     $('#gifdiv').empty();
+    $("#loader").show();
+    $("#gifdiv").hide();
 
     // use ajax instead of .post() to set content type to json for "reuqest.json()" in flask
     $.ajax({
@@ -47,6 +53,8 @@ function showGifsForText(options) {
  };
 
 $(function() {
+  $("#loader").hide();
+  $("#gifdiv").hide();
   $('#btSentence').click(function(event) { showSentence(); });
   $('#btSearchGifForText').click(function(event) {
     var searchText = $('#searchtext').val();
@@ -66,3 +74,4 @@ $(function() {
   });
   return true;
  });
+

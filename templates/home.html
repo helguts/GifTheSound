@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="{{ url_for('static', filename='home.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='loader.css') }}" rel="stylesheet">
     <title>Gif the sound</title>
 </head>
 <body>
@@ -45,6 +46,7 @@
         <input id="cbFastSearch" type="checkbox">Enable fast search (1 word = 1 gif)<br>
     </p>
 </div>
-<div id="gifdiv"></div>
+<div id="loader"></div>
+<div class="animate-bottom" id="gifdiv" style="display:none"></div>
 </body>
 </html>
