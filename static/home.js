@@ -10,6 +10,7 @@ function validURL(str) {
 
 function showGifsForText(options) {
     var start = new Date();
+    $("#btSearchGifForText").attr("disabled", true);
     var onSuccessShowGifs = function(jsonGifs) {
             var obj = jsonGifs;
 
@@ -29,7 +30,8 @@ function showGifsForText(options) {
             var end = new Date();
             var milliseconds = end - start;
             var totalSeconds = parseInt(milliseconds/ 1000);
-            $('#gifdiv').prepend('<p><span> request took ' + totalSeconds + 's for ' + $('.giffortext').length + 'gifs.</span></p>')
+            $('#gifdiv').prepend('<p><span> request took ' + totalSeconds + 's for ' + $('.giffortext').length + 'gifs.</span></p>');
+            $("#btSearchGifForText").attr("disabled", false);
      };
     $('#gifdiv').empty();
 
@@ -41,7 +43,7 @@ function showGifsForText(options) {
       contentType:"application/json; charset=utf-8",
       dataType:"json",
       success: onSuccessShowGifs
-    })
+    });
  };
 
 $(function() {
