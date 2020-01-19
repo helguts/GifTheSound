@@ -8,10 +8,10 @@ function validURL(str) {
   return !!pattern.test(str);
 }
 
-function showGifsForText(searchText) {
+function showGifsForText(searchText, doFastSearch) {
     var start = new Date();
     $('#gifdiv').empty();
-    $.post('/load_gifs', { search_text: searchText },
+    $.post('/load_gifs', { search_text: searchText, do_fast_search: doFastSearch},
         function(jsonGifs) {
             var obj = jQuery.parseJSON(jsonGifs);
 
@@ -37,6 +37,10 @@ function showGifsForText(searchText) {
 
 $(function() {
   $('#btSentence').click(function(event) { showSentence(); });
-  $('#btSearchGifForText').click(function(event) { showGifsForText($('#searchtext').val()); });
+  $('#btSearchGifForText').click(function(event) {
+    var searchText = $('#searchtext').val();
+    var doFastSearch = $('#cbFastSearch').is(":checked");
+    showGifsForText(searchText, doFastSearch);
+  });
   return true;
  });

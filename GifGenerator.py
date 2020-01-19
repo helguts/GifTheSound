@@ -1,4 +1,5 @@
 import os
+import random
 
 import giphy_client
 from giphy_client.rest import ApiException
@@ -10,18 +11,27 @@ class GifGenerator:
     __api_key = ""
     __api_instance = giphy_client.DefaultApi()
 
+    amount = 25
     offset = 0  # int | An optional results offset. Defaults to 0. (optional) (default to 0)
     rating = 'g'  # str | Filters results by specified rating. (optional)
     lang = 'en'  # str | Specify  default country for regional content; use a 2-letter ISO 639-1 country code. See list of supported languages <a href = \"../language-support\">here</a>. (optional)
     fmt = 'json'  # str | Used to indicate the expected response format. Default is Json. (optional) (default to json)
 
+    @classmethod
+    def create(cls, with_fast_search: bool = False):
+        generator = GifGenerator()
+        if with_fast_search:
+            generator.amount = 1
+            generator.offset = random.randrange(25)
+        return generator
+
     def __init__(self):
         self.__api_key = os.getenv("GIPHY_API_KEY")
 
-    def search(self, search_term, amount: int = 25):
+    def search(self, search_term):
         try:
             # Search Endpoint
-            api_response = self.__api_instance.gifs_search_get(self.__api_key, search_term, limit=amount,
+            api_response = self.__api_instance.gifs_search_get(self.__api_key, search_term, limit=self.amount,
                                                                offset=self.offset, rating=self.rating,
                                                                lang=self.lang, fmt=self.fmt)
 

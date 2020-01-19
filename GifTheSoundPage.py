@@ -21,9 +21,11 @@ def home():
 @app.route('/load_gifs', methods=['POST'])
 def load_gifs():
     search_text = request.form.get("search_text")
+    do_fast_search = request.form.get("do_fast_search")
 
     # returns list of gifs by word.. "ape": [gif1, gif2, gif3], "flower": [gif5]..
-    gifs_by_words = GifGenerator().search_gifs_for_text(search_text)
+    gif_generator = GifGenerator.create(do_fast_search)
+    gifs_by_words = gif_generator.search_gifs_for_text(search_text)
     all_urls = []
     for wordgif_dict in gifs_by_words:
         for word, gifs in wordgif_dict.items():
