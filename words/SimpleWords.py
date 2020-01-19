@@ -60,7 +60,7 @@ class SimpleWords:
             return self.adverbs()
 
     def words_in_text(self, text: str, word_types):
-        clean_text = self.__cleanup_text(text)
+        clean_text = self.do_cleanup_text(text)
         words_of_types = [self.get_words_by_type(word_type) for word_type in word_types]
         res = []
         for word in clean_text:
@@ -75,7 +75,7 @@ class SimpleWords:
                         break
         return res
 
-    def __cleanup_text(self, text):
+    def do_cleanup_text(self, text):
         text = text.replace("\n", " ").split(" ")
         clean_text = []
         for word in text:

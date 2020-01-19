@@ -13,7 +13,7 @@
 <div>
     <textarea class="searchtext" id="searchtext" maxlength="500"></textarea>
     <fieldset class="fieldset-auto-width">
-        <legend>Search wordtypes:</legend>
+        <legend>Search options:</legend>
         <ul>
             <li>
                 <label>
@@ -40,10 +40,13 @@
                 </label>
             </li>
         </ul>
+        <input id="cbAnyWords" type="checkbox">Show gifs for any words (word types are not evaluated)<br>
+        <input id="cbFastSearch" type="checkbox">Enable fast search (1 word = 1 gif)<br>
     </fieldset>
+</div>
+<div>
     <p>
         <button id="btSearchGifForText">Show gifs</button>
-        <input id="cbFastSearch" type="checkbox">Enable fast search (1 word = 1 gif)<br>
     </p>
 </div>
 <div id="loader"></div>

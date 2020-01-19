@@ -59,6 +59,7 @@ $(function() {
   $('#btSearchGifForText').click(function(event) {
     var searchText = $('#searchtext').val();
     var doFastSearch = $('#cbFastSearch').is(":checked");
+    var anyWords = $('#cbAnyWords').is(":checked");
     var wordTypes = {
         "nouns": $('#wordTypeNouns').is(":checked"),
         "adverbs": $('#wordTypeAdverbs').is(":checked"),
@@ -68,6 +69,7 @@ $(function() {
     var options = {
     "searchText": searchText,
     "doFastSearch": doFastSearch,
+    "anyWords": anyWords,
     "wordTypes": wordTypes
     };
     showGifsForText(options);

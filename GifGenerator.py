@@ -41,7 +41,10 @@ class GifGenerator:
             print("Exception when calling DefaultApi->gifs_search_get: %s\n" % e)
 
     def search_gifs_for_text(self, text, word_types):
-        words_in_text = SimpleWords().words_in_text(text, word_types)
+        if word_types:
+            words_in_text = SimpleWords().words_in_text(text, word_types)
+        else:
+            words_in_text = SimpleWords().do_cleanup_text(text)
 
         gifs_by_word = []
         for word in words_in_text:

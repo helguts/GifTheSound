@@ -29,17 +29,19 @@ def load_gifs():
     options = request.get_json()
     search_text = options["searchText"]
     do_fast_search = options["doFastSearch"]
+    use_any_words = options["anyWords"]
 
-    word_types_options = options["wordTypes"]
     word_types = []
-    if word_types_options["nouns"]:
-        word_types.append(WordType.NOUNS)
-    if word_types_options["verbs"]:
-        word_types.append(WordType.VERBS)
-    if word_types_options["adverbs"]:
-        word_types.append(WordType.ADVERBS)
-    if word_types_options["adjectives"]:
-        word_types.append(WordType.ADJECTIVES)
+    if not use_any_words:
+        word_types_options = options["wordTypes"]
+        if word_types_options["nouns"]:
+            word_types.append(WordType.NOUNS)
+        if word_types_options["verbs"]:
+            word_types.append(WordType.VERBS)
+        if word_types_options["adverbs"]:
+            word_types.append(WordType.ADVERBS)
+        if word_types_options["adjectives"]:
+            word_types.append(WordType.ADJECTIVES)
 
     # returns list of gifs by word.. "ape": [gif1, gif2, gif3], "flower": [gif5]..
     gif_generator = GifGenerator.create(do_fast_search)
