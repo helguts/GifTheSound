@@ -9,8 +9,9 @@ function validURL(str) {
 }
 
 function showGifsForText(searchText) {
+    var start = new Date();
     $('#gifdiv').empty();
-     $.post('/load_gifs', { search_text: searchText },
+    $.post('/load_gifs', { search_text: searchText },
         function(jsonGifs) {
             var obj = jQuery.parseJSON(jsonGifs);
 
@@ -25,6 +26,12 @@ function showGifsForText(searchText) {
                }
             });
             $('#gifdiv').append(markups);
+
+            // print timer!
+            var end = new Date();
+            var milliseconds = end - start;
+            var totalSeconds = parseInt(milliseconds/ 1000);
+            $('#gifdiv').prepend('<p><span> request took: ' + totalSeconds + 's</span></p>')
      });
  };
 
