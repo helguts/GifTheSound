@@ -2,7 +2,7 @@ import json
 import random
 
 from dotenv import load_dotenv
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 
 from GifGenerator import GifGenerator
 from words.SimpleWords import SimpleWords, WordType
@@ -16,6 +16,12 @@ words_by_type = SimpleWords().search_words()
 @app.route('/')
 def home():
     return render_template('home.html')
+
+
+@app.route('/favicon.png')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.png', mimetype='image/png')
 
 
 @app.route('/load_gifs', methods=['POST'])
