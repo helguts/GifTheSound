@@ -30,7 +30,7 @@ function showGifsForText(options) {
             var end = new Date();
             var milliseconds = end - start;
             var totalSeconds = parseInt(milliseconds/ 1000);
-            $('#gifdiv').prepend('<p><span> request took ' + totalSeconds + 's for ' + $('.giffortext').length + 'gifs.</span></p>');
+            $('#gifdiv').prepend('<span class="requesttimer">request took ' + totalSeconds + 's for ' + $('.giffortext').length + 'gifs.</span></br>');
 
             // enable controls and hide loader
             $("#btSearchGifForText").attr("disabled", false);
