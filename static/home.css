@@ -8,8 +8,21 @@ body {
     background: var(--brownish);
     font-family: sans-serif;
     color: white;
-    text-align: center;
-    vertical-align: middle;
+}
+
+.search-options {
+    text-align:left;
+    list-style: none;
+    position: absolute;
+    vertical-align: top;
+    width: 250px;
+}
+
+.maindiv {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align:center;
+    position: relative;
 }
 
 .requesttimer {
@@ -33,11 +46,13 @@ button {
 
 .searchtext {
     font-family: inherit;
+    color: var(--brownish);
     width: 500px;
 	height: 200px;
 	border: 3px solid var(--lightgrey);
 	padding: 5px;
 }
+
 
 .divforgif {
     width: 200px;
@@ -47,6 +62,8 @@ button {
 }
 
 #gifdiv {
+    text-align: center;
     width: 50%;
     margin: 0 auto;
 }
+

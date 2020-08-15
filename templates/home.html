@@ -10,40 +10,27 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{{ url_for('static', filename='home.js') }}" type="text/javascript"></script>
-<div>
+<div class="maindiv">
     <div>
-        <div>
-            <textarea class="searchtext" id="searchtext" maxlength="500">She was walking in the street</textarea>
-            <!--
-            <div>
-                <input checked id="cbAnyWords" type="checkbox">
-                <label for="cbAnyWords">Show gifs for any words (word types are not evaluated)</label></br>
+        <textarea class="searchtext" id="searchtext" maxlength="500">She was walking in the street</textarea>
+        <ul class="search-options" style="display:inline-block">
+            <b>general</b>
+            <li><input checked id="cbAnyWords" type="checkbox">Show gifs for any words</li>
+            <li><input id="cbFastSearch" style="margin-bottom:20px;" type="checkbox">Same word = same gif</li>
 
-                <input id="cbFastSearch" type="checkbox">
-                <label for="cbFastSearch">Same word = same gif</label></br>
-                <b>show gifs only for..</b></br>
-
-                <input id="wordTypeNouns" name="wordType" type="checkbox" value="nouns">
-                <label for="wordTypeNouns">Nouns</label></br>
-
-                <input id="wordTypeAdjectives" name="wordType" type="checkbox" value="adjectives">
-                <label for="wordTypeAdjectives">Adjectives</label></br>
-
-                <input id="wordTypeVerbs" name="wordType" type="checkbox" value="verbs">
-                <label for="wordTypeVerbs">Verbs</label></br>
-
-                <input id="wordTypeAdverbs" name="wordType" type="checkbox" value="Adverbs">
-                <label for="wordTypeAdverbs">Adverbs</label></br>
-            </div>
-            -->
-        </div>
+            <b>show gifs only for..</b>
+            <li><input id="wordTypeNouns" type="checkbox">Nouns</li>
+            <li><input id="wordTypeVerbs" type="checkbox">Verbs</li>
+            <li><input id="wordTypeAdjectives" type="checkbox">Adjectives</li>
+            <li><input id="wordTypeAdverbs" type="checkbox">Adverbs</li>
+        </ul>
     </div>
     <div>
         </br>
         <button id="btSearchGifForText" style="display:inline-block; margin-right: 10px;">Gif the sound</button>
         <div id="loader" style="display:inline-block;"></div>
-        <div id="gifdiv"></div>
     </div>
 </div>
+<div id="gifdiv"></div>
 </body>
 </html>
